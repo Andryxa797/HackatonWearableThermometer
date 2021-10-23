@@ -1,28 +1,34 @@
-
 import * as React from "react";
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 // import { Image } from "antd-mobile";
 import photo from "../../assets/photo.jpg";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useKeycloak } from 'expo-keycloak';
-import { Button} from 'react-native';
-import { Buffer } from "buffer"
-import JWT from 'expo-jwt';
+import { useKeycloak } from "expo-keycloak";
+import { Button } from "react-native";
+import { Buffer } from "buffer";
+import JWT from "expo-jwt";
 function SettingsScreen() {
-   const {logout, token} = useKeycloak();
-  const parts = token.split('.').map(part => Buffer.from(part.replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString());
+  const { logout, token } = useKeycloak();
+  const parts = token
+    .split(".")
+    .map((part) =>
+      Buffer.from(
+        part.replace(/-/g, "+").replace(/_/g, "/"),
+        "base64"
+      ).toString()
+    );
   const payload = JSON.parse(parts[1]);
-  console.log('JWT payload', payload);
-  
+  console.log("JWT payload", payload);
+
   return (
     <View style={styles.container}>
-            <Text>{payload.name}</Text>
-        <Button onPress={logout} title={'Logout'}/>
+      {/* <Text></Text> */}
+      {/* <Button onPress={logout} title={"Logout"} /> */}
       <View style={styles.image}>
         <Image source={photo} style={styles.stretch} />
       </View>
       <View style={styles.name}>
-        <Text style={styles.text}>Васецкий Андрей</Text>
+        <Text style={styles.text}>{payload.name}</Text>
       </View>
       <View style={styles.addDevice}>
         <Text style={styles.text}>Мои устройства</Text>
@@ -44,9 +50,8 @@ function SettingsScreen() {
         </View>
       </TouchableOpacity>
 
-
       <View style={styles.logout}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={logout}>
           <View
             style={{
               backgroundColor: "#fff",

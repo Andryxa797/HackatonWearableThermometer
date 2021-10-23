@@ -3,8 +3,10 @@
     "",
     "\\sreens",
     "\\sreens\\home",
-    "\\sreens\\myTads"
+    "\\sreens\\measuringNow",
+    "\\sreens\\myTads",
+    "\\sreens\\settings"
   ],
-  "SelectedNode": "\\sreens\\myTads\\index.js",
+  "SelectedNode": "\\sreens\\settings\\index.js",
   "PreviewInSolutionExplorer": false
 }
