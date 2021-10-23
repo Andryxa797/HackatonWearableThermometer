@@ -1,43 +1,20 @@
-import React, { Component } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { MyTabs } from './sreens/myTads';
-import { Font } from 'expo';
-import { Provider } from '@ant-design/react-native';
-import AppLoading from 'expo-app-loading';
-// import { Provider } from 'react-redux';
+import React from "react";
+import { KeycloakProvider, useKeycloak } from "expo-keycloak";
+import AppConfig from "./app.json";
+import { Auth } from "./sreens/auth";
 
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <MyTabs />
-//     </NavigationContainer>
-//   );
-// }
-
-export default class App extends React.Component {
-  state = {
-    theme: null,
-    currentTheme: null,
-    isReady: false,
+export default function App() {
+  const keycloakConfiguration = {
+    clientId: 'android',
+    realm: 'WearableThermometer',
+    url: 'http://10.0.2.2:8080/auth', // This is usually an url ending with /auth
+    scheme: AppConfig.expo.scheme,
   };
-  changeTheme = (theme, currentTheme) => {
-    this.setState({ theme, currentTheme });
-  };
-  async componentDidMount() {
-    this.setState({ isReady: true });
-  }
-  render() {
-    const { theme, currentTheme, isReady } = this.state;
-    if (!isReady) {
-      return <AppLoading />;
-    }
-    return (
-      <Provider theme={theme}>
-        <NavigationContainer>
-          <MyTabs />
-        </NavigationContainer>
-      </Provider>
-    );
-  }
+
+  return (
+    <KeycloakProvider {...keycloakConfiguration}>
+        <Auth />
+    </KeycloakProvider>
+  );
 }
+
