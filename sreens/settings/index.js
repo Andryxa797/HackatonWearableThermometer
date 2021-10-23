@@ -1,13 +1,98 @@
-import * as React from 'react';
-import { Text, View } from 'react-native';
-
-
+import * as React from "react";
+import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+// import { Image } from "antd-mobile";
+import photo from "../../assets/photo.jpg";
+import Ionicons from "@expo/vector-icons/Ionicons";
 function SettingsScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
+  return (
+    <View style={styles.container}>
+      <View style={styles.image}>
+        <Image source={photo} style={styles.stretch} />
       </View>
-    );
-  }
+      <View style={styles.name}>
+        <Text style={styles.text}>Васецкий Андрей</Text>
+      </View>
+      <View style={styles.addDevice}>
+        <Text style={styles.text}>Мои устройства</Text>
+      </View>
 
-  export {SettingsScreen}
+      <TouchableOpacity onPress={() => {}}>
+        <View
+          style={{
+            backgroundColor: "#fff",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 15,
+            padding: 15,
+          }}
+        >
+          <Text style={{ color: "tomato" }}>
+            <Ionicons name="add" color="00FF00" />
+            &nbsp; Добавить устройство
+          </Text>
+        </View>
+      </TouchableOpacity>
+
+      <View style={styles.logout}>
+        <TouchableOpacity onPress={() => {}}>
+          <View
+            style={{
+              backgroundColor: "#fff",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 15,
+              padding: 15,
+            }}
+          >
+            <Text
+              style={{
+                color: "red",
+                justifyContent: "center",
+                alignItems: "flex-start",
+              }}
+            >
+              <Ionicons name="log-out" color="red" size={20} />
+              &nbsp; Выйти
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 30,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    flexDirection: "column",
+  },
+  addDevice: {
+    marginTop: 30,
+    marginLeft: 25,
+    marginBottom: 10,
+  },
+  stretch: {
+    width: 100,
+    height: 100,
+    resizeMode: "stretch",
+    borderRadius: 10000,
+  },
+  text: {
+    fontSize: 17,
+    color: "black",
+  },
+  name: {
+    marginTop: 105,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  logout: {
+    marginTop: 370,
+  },
+});
+
+export { SettingsScreen };
