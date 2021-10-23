@@ -7,7 +7,13 @@ import { useKeycloak } from "expo-keycloak";
 import { Button } from "react-native";
 import { Buffer } from "buffer";
 import JWT from "expo-jwt";
+
 function SettingsScreen() {
+  const RCTNetworking = require("react-native/Libraries/Network/RCTNetworking");
+  RCTNetworking.clearCookies((result) => {
+    console.log(result); //true if successfully cleared
+  });
+
   const { logout, token } = useKeycloak();
   const parts = token
     .split(".")
@@ -18,7 +24,14 @@ function SettingsScreen() {
       ).toString()
     );
   const payload = JSON.parse(parts[1]);
-  console.log("JWT payload", payload);
+  // console.log("JWT payload", payload);
+  console.log(logout);
+
+  // const logOutHandler = () => {
+  //   // RCTNetworking.clearCookies(() => {});
+
+  //   return logout;
+  // };
 
   return (
     <View style={styles.container}>
