@@ -3,7 +3,7 @@ import { KeycloakProvider, useKeycloak } from "expo-keycloak";
 import AppConfig from "./app.json";
 import { Auth } from "./sreens/auth";
 
-export const DOMIN = '192.168.0.102:8080'
+export const DOMIN = '10.0.2.2:8080'
 
 export default function App() {
   const keycloakConfiguration = {
