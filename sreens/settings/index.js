@@ -1,12 +1,11 @@
 import * as React from "react";
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
-// import { Image } from "antd-mobile";
 import photo from "../../assets/photo.jpg";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useKeycloak } from "expo-keycloak";
-import { Button } from "react-native";
 import { Buffer } from "buffer";
-import JWT from "expo-jwt";
+import Cookies from 'universal-cookie';
+
 function SettingsScreen() {
   const { logout, token } = useKeycloak();
   const parts = token
@@ -18,12 +17,11 @@ function SettingsScreen() {
       ).toString()
     );
   const payload = JSON.parse(parts[1]);
-  console.log("JWT payload", payload);
+
+  console.log(Cookies);
 
   return (
     <View style={styles.container}>
-      {/* <Text></Text> */}
-      {/* <Button onPress={logout} title={"Logout"} /> */}
       <View style={styles.image}>
         <Image source={photo} style={styles.stretch} />
       </View>
@@ -33,7 +31,7 @@ function SettingsScreen() {
       <View style={styles.addDevice}>
         <Text style={styles.text}>Мои устройства</Text>
       </View>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={() => { }}>
         <View
           style={{
             backgroundColor: "#fff",
@@ -100,7 +98,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 17,
-    color: "black",
+    color: '#000000',
   },
   name: {
     marginTop: 105,
@@ -108,7 +106,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logout: {
-    marginTop: 370,
+    marginTop: 50,
   },
 });
 

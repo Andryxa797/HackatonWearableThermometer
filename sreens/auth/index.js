@@ -1,28 +1,13 @@
 import React from "react";
-import {
-    Text,
-    View,
-    Button,
-    StyleSheet,
-    ActivityIndicator,
-    TextInput,
-} from "react-native";
-import { KeycloakProvider, useKeycloak } from "expo-keycloak";
-import AppConfig from "./../../app.json";
+import { Button, StyleSheet, ActivityIndicator, TextInput, View, } from "react-native";
+import { useKeycloak } from "expo-keycloak";
 import { MyTabs } from "../myTads";
 import { NavigationContainer } from "@react-navigation/native";
 
+
 export const Auth = () => {
-    const {
-        ready, // If the discovery is already fetched and ready to prompt authentication flow
-        login, // The login function - opens the browser
-        isLoggedIn, // Helper boolean to use e.g. in your components down the tree
-        token, // Access token, if available
-        logout, // The logout function - Logs the user out
-    } = useKeycloak();
-
+    const { ready, login, isLoggedIn, token, } = useKeycloak();
     if (!ready) return <ActivityIndicator />;
-
     if (!isLoggedIn)
         return (
             <View style={{ margin: 24 }}>
@@ -33,10 +18,10 @@ export const Auth = () => {
 
     return (
         <NavigationContainer>
-          <MyTabs/>
-      </NavigationContainer>
+            <MyTabs />
+        </NavigationContainer>
     );
-  };
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -45,13 +30,3 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
 });
-
-  //   <View style={{ margin: 24 }}>
-        {/* <Text style={{ fontSize: 17, marginBottom: 24 }}>Logged in!</Text>
-        <Text>Your Access Token</Text>
-        <TextInput value={token}></TextInput>
-        <Button onPress={logout} title={"Logout"} style={{ marginTop: 24 }} /> */}
-        // <View>
-        {/* <MyTabs /> */}
-{/* </View> */}
-    {/* </View> */ }

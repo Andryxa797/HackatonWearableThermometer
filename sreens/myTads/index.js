@@ -13,6 +13,7 @@ function MyTabs() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           switch (route.name) {
