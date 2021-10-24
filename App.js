@@ -3,20 +3,19 @@ import { KeycloakProvider, useKeycloak } from "expo-keycloak";
 import AppConfig from "./app.json";
 import { Auth } from "./sreens/auth";
 
-export const DOMIN = '10.0.2.2:8080'
+export const DOMIN = "172.16.68.95:8080";
 
 export default function App() {
   const keycloakConfiguration = {
-    clientId: 'android',
-    realm: 'WearableThermometer',
+    clientId: "android",
+    realm: "WearableThermometer",
     url: `http://${DOMIN}/auth`,
     scheme: AppConfig.expo.scheme,
   };
 
   return (
     <KeycloakProvider {...keycloakConfiguration}>
-        <Auth />
+      <Auth />
     </KeycloakProvider>
   );
 }
-

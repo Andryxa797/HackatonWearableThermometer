@@ -5,6 +5,9 @@ import { LineChart } from "react-native-chart-kit";
 function HomeScreen() {
   return (
     <View>
+      <View style={{ marginTop: 20, marginLeft: 30 }}>
+        <Text style={{ fontSize: 17 }}>График температуры человека</Text>
+      </View>
       <View
         style={{
           flex: 1,
@@ -15,10 +18,10 @@ function HomeScreen() {
       >
         <LineChart
           data={{
-            labels: ["January", "February", "March", "April", "May", "June"],
+            labels: ["11:00", "12:00", "13:00", "14:00", "15:00", "16:00"],
             datasets: [
               {
-                data: [36.6, 36.4, 36.8, 36.2, 36.0, 36.5, 36.6],
+                data: [36.6, 36.4, 36.8, 36.2, 36.6, 36.5, 36.6],
               },
             ],
           }}
@@ -49,6 +52,24 @@ function HomeScreen() {
             borderRadius: 16,
           }}
         />
+      </View>
+      <View
+        style={{
+          marginTop: 200,
+          backgroundColor: "#f89b00",
+          width: 360,
+          height: 60,
+          marginLeft: 25,
+          marginTop: 240,
+          borderRadius: 20,
+        }}
+      >
+        <Text
+          style={{ fontSize: 20, marginLeft: 20, marginTop: 17, color: "#fff" }}
+        >
+          Состояние здоровья: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 😊
+        </Text>
       </View>
     </View>
   );

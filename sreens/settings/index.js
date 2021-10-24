@@ -4,7 +4,7 @@ import photo from "../../assets/photo.jpg";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useKeycloak } from "expo-keycloak";
 import { Buffer } from "buffer";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 function SettingsScreen() {
   const { logout, token } = useKeycloak();
@@ -31,7 +31,7 @@ function SettingsScreen() {
       <View style={styles.addDevice}>
         <Text style={styles.text}>Мои устройства</Text>
       </View>
-      <TouchableOpacity onPress={() => { }}>
+      <TouchableOpacity onPress={() => {}}>
         <View
           style={{
             backgroundColor: "#fff",
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 17,
-    color: '#000000',
+    color: "#000000",
   },
   name: {
     marginTop: 105,
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logout: {
-    marginTop: 50,
+    marginTop: 380,
   },
 });
 
